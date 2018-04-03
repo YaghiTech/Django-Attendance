@@ -1,0 +1,42 @@
+Home Page dAAb
+<form method="POST" action="">
+	{% csrf_token %}
+ 	
+	<input list="names" name="name">
+	<datalist id="names">
+		{% for kid in all_kids %}
+		<option value="{{kid.kid_name}}">
+		{% endfor %}
+	</datalist>
+
+	<select name = 'grade'>
+		<option value=7>7</option>
+		<option value=8>8</option>
+		<option value=9>9</option>
+		<option value=10>10</option>
+		<option value=11>11</option>
+		<option value=12>12</option>
+	</select>
+
+	<input list="subjects" name="subject">
+	<datalist id="subjects">
+		<option value="Anglais">
+		<option value="Francais">
+		<option value="Mathémathique">
+		<option value="Science">
+	</datalist>
+	<button type="submit"></button>
+
+	{% for kid in all_kids %}
+		<br>
+		{{kid.kid_name}}
+		{{kid.kid_grade}}
+
+		{% if kid.kid_signed_in %}
+		    signed in
+		{% else %}
+		    not signed in
+		{% endif %}
+			{% endfor %}
+
+</form>
