@@ -114,7 +114,7 @@
 			<li class="nav-item welcome-name">
 				<div class="dropdown">
 				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Bienvenue ~NAME~
+					Bienvenue {{ name }}
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" href="#">Action</a>
@@ -125,7 +125,7 @@
 			</li>
 			
 			<li class="nav-item">
-				<a href="./index.html"><button style="margin-right: 4px" type="button" class="btn btn-danger">Retourner</button></a>
+				<a href="{% url 'adminpanel:logout' %}"><button style="margin-right: 4px" type="button" class="btn btn-danger">Déconnexion</button></a>
 			</li>
          
           </ul>
@@ -148,9 +148,9 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="Section1">
 						
-						<a href="./adminpanel.html" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>		
+						<a href="{% url 'adminpanel:panel' %}" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>		
 						<input style="width: 27%;" class="form-control input-sm" id="inputsm" type="text" name="blank" placeholder="Recherche">
-						<a href="./adminpanel.html" style="float: right;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">+</button></a>	
+						<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">+</button></a>	
 						<br>
 
 						<table style="width:100%">
@@ -159,17 +159,14 @@
 								<th>Annee d'étude</th>
 								<th># d'étudiant</th>
 							</tr>
-
+							
+							{% for student in students %}
 							<tr>
 								<td><a href="#">Evan Dawson</a></td> 
 								<td>11e</td>
 								<td>0987654321</td>
 							</tr>
-
-							<tr>
-								<td><a href="#">Liam Maclean</a></td> 
-								<td>7e</td>
-								<td>1234567890</td>
+							{% endfor %}
 						</table>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="Section2">
