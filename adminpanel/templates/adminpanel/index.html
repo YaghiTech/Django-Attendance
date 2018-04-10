@@ -44,24 +44,26 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a href="./index.html"><button style="margin-right: 4px" type="button" class="btn btn-danger">Retourner</button></a>
+				<a href="{% url 'Home:index' %}"><button style="margin-right: 4px" type="button" class="btn btn-danger">Retourner</button></a>
 			</li>
          
           </ul>
         </div>
       </div>
     </nav>
-
+	<p style="color:red;">{{ message }}</p>
     <!-- Page Content -->
     <div class="container">
       <div class="row">
 		<div style = "" class="col-lg-4"></div>
         <div style = "margin-top: 5%;" class="col-lg-4">
 			<center><h2 style="margin-bottom: 20px;">Administrateur</h2></center>
-			<input class="form-control input-sm" id="inputsm" type="text" placeholder="Nom de l'utilisateur" name="user"><br>
-			<input class="form-control input-sm" id="inputsm" type="password" name="password" placeholder="Mot de passe" name="pass"><br>
-			<center><a href="./adminpanel.html"><button style="margin-right: 4px" type="button" class="btn btn-success">Entrer</button>	</a></center>
-        </div>
+			<form action="{% url 'adminpanel:index' %}" method="post">{% csrf_token %}
+				<input class="form-control input-sm" id="inputsm" type="text" placeholder="Nom de l'utilisateur" name="user" required autofocus><br>
+				<input class="form-control input-sm" id="inputsm" type="password" placeholder="Mot de passe" name="pass" required><br>
+				<center><button style="margin-right: 4px" type="submit" class="btn btn-success">Entrer</button></center>
+ 			</form>       
+		</div>
       </div>
     </div>
 
