@@ -196,19 +196,17 @@
 						<td>Mr. Yaghi</td>
 						<td>En classe</td>
 						<td>Aide</td>
-						<td>12:26pm</td>
-					{% if kid.kid_signed_in %}
-				    	<td><button name="signout_{{kid.id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
-					{% else %}
-				    	<td>not signed in</td>
-					{% endif %}
+						<td>{{kid.time_entered}}</td>
+				    	<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
+					
 					</tr>
 				{% endfor %}
 				{% for sign_in in all_sign_ins %}
+					{% if not sign_in.currently_signed_in %}
 					<tr>
 							<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-							<td>{{sign_in.kid.kid_name}}</td> 
-							<td>{{sign_in.kid.kid_grade}}e</td> 
+							<td>{{sign_in.kid_name}}</td> 
+							<td>{{sign_in.kid_grade}}e</td> 
 							<td>{{sign_in.subject}}</td>
 							<td>Mr. Yaghi</td>
 							<td>En classe</td>
@@ -216,6 +214,7 @@
 							<td>{{sign_in.time_entered}}</td>
 							<td>{{sign_in.time_left}}</td>
 					</tr>
+					{%endif%}
 				{% endfor %}
 				
 			</table>
