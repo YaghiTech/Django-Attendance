@@ -41,15 +41,24 @@ def index(request):
 			setattr(kid, 'kid_signed_in', True)
 			setattr(kid, 'time_entered', datetime.datetime.now())
 
+			setattr(kid, 'subject',  request.POST.get("subject", None))
+			setattr(kid, 'place',  request.POST.get("place", None))
+			setattr(kid, 'reason', request.POST.get("reason", None))
+			setattr(kid, 'teacher_name', request.POST.get("teacher", None))
+
 			kid.save()
 
 			new_sign_in = SignIn()
 			new_sign_in.kid_name = kid.kid_name
 			new_sign_in.kid_grade = kid.kid_grade
 			new_sign_in.reason = request.POST.get("reason", None)
+			new_sign_in.place = request.POST.get("place", None)
 			new_sign_in.subject = request.POST.get("subject", None)
+			new_sign_in.teacher_name =  request.POST.get("teacher", None)
 			new_sign_in.time_entered = datetime.datetime.now()
 			new_sign_in.kid_id = kid.id
+
+			print(request.POST.get("place", None))
 			#new_sign_in.time_left = datetime.datetime.now()
 
 			new_sign_in.save()

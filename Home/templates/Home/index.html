@@ -154,15 +154,15 @@
 				  <fieldset>
 					<div class="endroit">
 					  <input type="radio" id="contactChoice1"
-					   name="contact" value="email" checked>
+					   name="place" value="Centre de Réussite" checked>
 					  <label for="contactChoice1">Centre de Réussite</label>
 
 					  <input type="radio" id="contactChoice2"
-					   name="contact" value="phone">
+					   name="place" value="Salle de classe">
 					  <label for="contactChoice2">Salle de classe</label>
 
 					  <input type="radio" id="contactChoice3"
-					   name="contact" value="mail">
+					   name="place" value="Autre">
 					  <label for="contactChoice3">Autre</label>
 					</div>
 				  </fieldset>
@@ -192,10 +192,10 @@
 						<td><script> document.write(new Date().toLocaleDateString()); </script></td>
 						<td>{{kid.kid_name}}</td> 
 						<td>{{kid.kid_grade}}e</td> 
-						<td>Science</td>
-						<td>Mr. Yaghi</td>
-						<td>En classe</td>
-						<td>Aide</td>
+						<td>{{kid.subject}}</td>
+						<td>{{kid.teacher_name}}</td>
+						<td>{{kid.place}}</td>
+						<td>{{kid.reason}}</td>
 						<td>{{kid.time_entered}}</td>
 				    	<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
 					
@@ -208,9 +208,9 @@
 							<td>{{sign_in.kid_name}}</td> 
 							<td>{{sign_in.kid_grade}}e</td> 
 							<td>{{sign_in.subject}}</td>
-							<td>Mr. Yaghi</td>
-							<td>En classe</td>
-							<td>Aide</td>
+							<td>{{sign_in.teacher_name}}</td>
+							<td>{{sign_in.place}}</td>
+							<td>{{sign_in.subject}}</td>
 							<td>{{sign_in.time_entered}}</td>
 							<td>{{sign_in.time_left}}</td>
 					</tr>
