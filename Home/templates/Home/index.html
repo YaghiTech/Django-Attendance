@@ -6,6 +6,7 @@
 			body {
 				background: #e5def6 !important;
 			}
+
 			.login p {
 				margin-bottom: 0px;
 			}
@@ -57,6 +58,7 @@
 				color: black;
 				outline: 1px solid black;
 			}
+
 		</style>
 
 		<style>
@@ -83,12 +85,18 @@
 		<body>
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-				<div class="container">
+				<div class="container" style="">
 					<a class="navbar-brand" href=""><b>Centre de Réussite</b></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarResponsive">
+
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Élèves</a></li>
+							<li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Professeurs</a></li>
+						</ul>
+
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item">
 								<a href="{% url 'adminpanel:index' %}"><button style="margin-right: 4px" type="button" class="btn btn-warning">Admin</button>	</a>
@@ -97,102 +105,122 @@
 					</div>
 				</div>
 			</nav>
-			<!-- Page Content -->
-			<div class="container">
-				<div class="row">
-					<div style = "margin-top: 5%;" class="col-lg-12">
-						<div class="login">
-							<p>Nom: </p>
-							<input list = "names" class="form-control input-sm" id="inputsm" type="text" name="name"><br> 
-							<datalist id="names">
-								{% for kid in all_kids %}
-									<option value="{{kid.kid_name}}">
-								{% endfor %}
-							</datalist>
 
-							<p>Sujet: </p>
-							<input list = "subjects" class="form-control input-sm" id="inputsm" type="text" name="subject"><br>
-							<datalist id="subjects">
-								<option value="Anglais">
-								<option value="Francais">
-								<option value="Mathémathique">
-								<option value="Science">
-							</datalist>
+			<!-- Kid Login Content -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="Section1">
+					<div class="container">
+						<div class="row">
+							<div style = "margin-top: 5%;" class="col-lg-12">
+								<div class="login">
+									<p>Nom: </p>
+									<input list = "names" class="form-control input-sm" id="inputsm" type="text" name="name"><br> 
+									<datalist id="names">
+										{% for kid in all_kids %}
+											<option value="{{kid.kid_name}}">
+										{% endfor %}
+									</datalist>
 
-							<p>Enseignant: </p>
-							<input list = "teachers" class="form-control input-sm" id="inputsm" type="text" name="teacher"><br>
-							<datalist id="teachers">
-								{% for teacher in all_teachers %}
-									<option value="{{teacher.teacher_name}}">
-								{% endfor %}
-							</datalist>
+									<p>Sujet: </p>
+									<input list = "subjects" class="form-control input-sm" id="inputsm" type="text" name="subject"><br>
+									<datalist id="subjects">
+										<option value="Anglais">
+										<option value="Francais">
+										<option value="Mathémathique">
+										<option value="Science">
+									</datalist>
 
-							<p>Raison: </p>
-							<input class="form-control input-sm" id="inputsm" type="text" name="reason"><br>
-							<p>Endroit: </p>
-							<form style="float:left">
-								<fieldset>
-									<div class="endroit">
-										<input type="radio" id="contactChoice1" name="place" value="Centre de Réussite" checked>
-										<label for="contactChoice1">Centre de Réussite</label>
-										<input type="radio" id="contactChoice2" name="place" value="Salle de classe">
-										<label for="contactChoice2">Salle de classe</label>
-										<input type="radio" id="contactChoice3" name="place" value="Autre">
-										<label for="contactChoice3">Autre</label>
-									</div>
-								</fieldset>
-							</form>
+									<p>Enseignant: </p>
+									<input list = "teachers" class="form-control input-sm" id="inputsm" type="text" name="teacher"><br>
+									<datalist id="teachers">
+										{% for teacher in all_teachers %}
+											<option value="{{teacher.teacher_name}}">
+										{% endfor %}
+									</datalist>
+
+									<p>Raison: </p>
+									<input class="form-control input-sm" id="inputsm" type="text" name="reason"><br>
+									<p>Endroit: </p>
+									<form style="float:left">
+										<fieldset>
+											<div class="endroit">
+												<input type="radio" id="contactChoice1" name="place" value="Centre de Réussite" checked>
+												<label for="contactChoice1">Centre de Réussite</label>
+												<input type="radio" id="contactChoice2" name="place" value="Salle de classe">
+												<label for="contactChoice2">Salle de classe</label>
+												<input type="radio" id="contactChoice3" name="place" value="Autre">
+												<label for="contactChoice3">Autre</label>
+											</div>
+										</fieldset>
+									</form>
 							
-							<a href="#" style=""><button style="margin-right: 4px" type="submit" class="btn btn-success enter-button">Entrer</button></a><br><br>
-						</div>
+									<a href="#" style=""><button style="margin-right: 4px" type="submit" class="btn btn-success enter-button">Entrer</button></a><br><br>
+								</div>
 
-						<br><h3 style="float:left"><u>Étudients dans la salle</u></h3>
-						<table style="width:100%">
-							<tr>
-								<th>Date</th>
-								<th>Nom de l'élève</th> 
-								<th>Annee d'étude</th>
-								<th>Sujet</th>
-								<th>Enseignant</th>
-								<th>Endroit</th>
-								<th>Raison</th>
-								<th>L'heure d'arrivee</th>
-								<th>L'heure de sortie</th>
-							</tr>
-							{% for kid in kids_signed_in %}
-								<tr>
-									<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-									<td>{{kid.kid_name}}</td> 
-									<td>{{kid.kid_grade}}e</td> 
-									<td>{{kid.subject}}</td>
-									<td>{{kid.teacher_name}}</td>
-									<td>{{kid.place}}</td>
-									<td>{{kid.reason}}</td>
-									<td>{{kid.time_entered}}</td>
-									<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
-								</tr>
-							{% endfor %}
-
-							{% for sign_in in all_sign_ins %}
-								{% if not sign_in.currently_signed_in %}
+								<br><h3 style="float:left"><u>Étudients dans la salle</u></h3>
+								<table style="width:100%">
 									<tr>
-										<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-										<td>{{sign_in.kid_name}}</td> 
-										<td>{{sign_in.kid_grade}}e</td> 
-										<td>{{sign_in.subject}}</td>
-										<td>{{sign_in.teacher_name}}</td>
-										<td>{{sign_in.place}}</td>
-										<td>{{sign_in.subject}}</td>
-										<td>{{sign_in.time_entered}}</td>
-										<td>{{sign_in.time_left}}</td>
+										<th>Date</th>
+										<th>Nom de l'élève</th> 
+										<th>Annee d'étude</th>
+										<th>Sujet</th>
+										<th>Enseignant</th>
+										<th>Endroit</th>
+										<th>Raison</th>
+										<th>L'heure d'arrivee</th>
+										<th>L'heure de sortie</th>
 									</tr>
-								{% endif %}
-							{% endfor %}
-						</table>
+									{% for kid in kids_signed_in %}
+										<tr>
+											<td><script> document.write(new Date().toLocaleDateString()); </script></td>
+											<td>{{kid.kid_name}}</td> 
+											<td>{{kid.kid_grade}}e</td> 
+											<td>{{kid.subject}}</td>
+											<td>{{kid.teacher_name}}</td>
+											<td>{{kid.place}}</td>
+											<td>{{kid.reason}}</td>
+											<td>{{kid.time_entered}}</td>
+											<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
+										</tr>
+									{% endfor %}
+
+									{% for sign_in in all_sign_ins %}
+										{% if not sign_in.currently_signed_in %}
+											<tr>
+												<td><script> document.write(new Date().toLocaleDateString()); </script></td>
+												<td>{{sign_in.kid_name}}</td> 
+												<td>{{sign_in.kid_grade}}e</td> 
+												<td>{{sign_in.subject}}</td>
+												<td>{{sign_in.teacher_name}}</td>
+												<td>{{sign_in.place}}</td>
+												<td>{{sign_in.subject}}</td>
+												<td>{{sign_in.time_entered}}</td>
+												<td>{{sign_in.time_left}}</td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+				<!-- Kid Login Content END -->
+
+				<!-- Teacher Box Log Content -->
 			
+				<div role="tabpanel" class="tab-pane" id="Section2">
+					<div class="container">
+						<div class="row">
+							<div style = "margin-top: 5%;" class="col-lg-12">
+								fkdaofnasofnasoifnasoifnasiofnaoifgnaogndgosdnfio
+							</div>
+						</div>			
+					</div>
+				</div>
+				<!-- Teacher Box Log Content END -->
+			</div>
+			<!-- Tab Content END -->
+
 			<div class="footer" style="height: 50px;">
 			</div>
 
@@ -202,27 +230,16 @@
 		</body>
 
 		<script>
-			function openPage(pageName, elmnt, color) {
-			// Hide all elements with class="tabcontent" by default */
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-	
-			// Remove the background color of all tablinks/buttons
-			tablinks = document.getElementsByClassName("tablink");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].style.backgroundColor = "";
-			}
-	
-			// Show the specific tab content
-			document.getElementById(pageName).style.display = "block";
-	
-			// Add the specific color to the button used to open the tab content
-			elmnt.style.backgroundColor = color;
-			}
-	
+			$(document).ready(function () {
+				$('.nav li a').click(function(e) {
+
+					$('.nav li.active').removeClass('active');
+
+					var $parent = $(this).parent();
+					$parent.addClass('active');
+					e.preventDefault();
+				});
+			});
 		</script>
 	</html>
 </form>
