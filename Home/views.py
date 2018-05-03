@@ -5,6 +5,7 @@ import datetime
 def index(request):
 	all_kids = Kid.objects.all()
 	name = ""
+
 	if request.method == "POST":
 		for kid in all_kids:
 			
@@ -31,10 +32,13 @@ def index(request):
 			SignIn.objects.all().delete()
 			return HttpResponseRedirect('/')
 		elif (len([x for x in all_kids if x.kid_name == name]) == 0):
-			newkid = Kid()
-			newkid.kid_name = name
-			newkid.kid_signed_in = True
-			newkid.save()
+			#newkid = Kid()
+			#newkid.kid_name = name
+			#newkid.kid_signed_in = True
+			#newkid.save()
+			return render(request, "Home/index.html", {'all_kids' : all_kids,
+					 'kids_signed_in' : [x for x in SignIn.objects.all() if x.currently_signed_in == True], 'all_teachers' : Teacher.objects.all(),
+					 'all_sign_ins' : SignIn.objects.all, 'kid_does_not_exist' : True})
 			return HttpResponseRedirect('/')
 		else:
 			kid = Kid.objects.get(kid_name=name)
@@ -69,7 +73,7 @@ def index(request):
 		
 	return render(request, "Home/index.html", {'all_kids' : all_kids,
 					 'kids_signed_in' : [x for x in SignIn.objects.all() if x.currently_signed_in == True], 'all_teachers' : Teacher.objects.all(),
-					 'all_sign_ins' : SignIn.objects.all})
+					 'all_sign_ins' : SignIn.objects.all, "kid_does_not_exist" : False})
 
 
 def adminlogin(request):
