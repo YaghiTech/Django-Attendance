@@ -33,6 +33,11 @@ def index(request):
 
 	return render(request, 'adminpanel/index.html', context)
 
+def add_kid(request):
+	kid = Kid()
+	kid.save()
+	return HttpResponseRedirect('/adminpanel/' + str(kid.id)) 	
+
 def details(request, kid_id):
 	kid = get_object_or_404(Kid, id=kid_id)
 	if request.method == 'POST':
@@ -43,7 +48,7 @@ def details(request, kid_id):
 					setattr(kid, name, request_text)
 			kid.save()
 			return HttpResponseRedirect('/adminpanel')
-			
+
 	return render(request, 'adminpanel/details.html', {'kid' : kid})
 
 def panel(request):
