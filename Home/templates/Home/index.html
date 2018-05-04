@@ -5,6 +5,13 @@
 		<style type="text/css">
 			body {
 				background: #e5def6 !important;
+				padding-top: 54px;
+			}
+
+			@media (min-width: 992px) {
+				body {
+					padding-top: 56px;
+				}
 			}
 
 			.login p {
@@ -61,29 +68,15 @@
 
 		</style>
 
-		<style>
-			body {
-				padding-top: 54px;
-			}
-			
-			@media (min-width: 992px) {
-				body {
-					padding-top: 56px;
-				}
-			}
-		</style>
-
 		<head>
 			<title>Centre de Réussite</title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-			<meta name="description" content="">
-			<meta name="author" content="">
 			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 		</head>
 
 		<body>
-			<!-- Navigation -->
+			<!-- Barre de Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 				<div class="container" style="">
 					<a class="navbar-brand" href=""><b>Centre de Réussite</b></a>
@@ -105,9 +98,11 @@
 					</div>
 				</div>
 			</nav>
+			<!--Barre de Navigation FIN-->
 
-			<!-- Kid Login Content -->
+			<!-- Onglet pour étudiant/enseignant -->
 			<div class="tab-content">
+				<!-- Contenu d'étudiant -->
 				<div role="tabpanel" class="tab-pane active" id="Section1">
 					<div class="container">
 						<div class="row">
@@ -204,10 +199,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- Kid Login Content END -->
+				<!-- Contenu d'étudiant FIN -->
 
-				<!-- Teacher Box Log Content -->
-			
+				<!-- Contenu d'enseignant -->
 				<div role="tabpanel" class="tab-pane" id="Section2">
 					<div class="container">
 						<div class="row">
@@ -217,18 +211,19 @@
 						</div>			
 					</div>
 				</div>
-				<!-- Teacher Box Log Content END -->
+				<!-- Contenu d'enseignant FIN -->
 			</div>
-			<!-- Tab Content END -->
+			<!-- Onglet pour étudiant/enseignant FIN -->
 
-			<div class="footer" style="height: 50px;">
-			</div>
+			<div class="footer" style="height: 50px;" />
 
-			<!-- Bootstrap core JavaScript -->
+			<!-- Bootstrap + JQuery -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+			<!-- Bootstrap + JQuery FIN -->
 		</body>
 
+		<!-- Code pour controller les onglets -->
 		<script>
 			$(document).ready(function () {
 				$('.nav li a').click(function(e) {
@@ -241,5 +236,6 @@
 				});
 			});
 		</script>
+		<!-- Code pour controller les onglets FIN -->
 	</html>
 </form>
