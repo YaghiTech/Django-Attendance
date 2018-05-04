@@ -164,9 +164,9 @@
 							
 							{% for student in students %}
 							<tr>
-								<td><a href="#">Evan Dawson</a></td> 
-								<td>11e</td>
-								<td>0987654321</td>
+								<td><a href="/panel/{{student.id}}">{{student.kid_name}}</a></td> 
+								<td>{{student.kid_grade}}</td>
+								<td>{{student.kid_student_id}}</td>
 							</tr>
 							{% endfor %}
 						</table>

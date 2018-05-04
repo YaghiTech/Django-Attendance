@@ -35,6 +35,15 @@ def index(request):
 
 def details(request, kid_id):
 	kid = get_object_or_404(Kid, id=kid_id)
+	if request.method == 'POST':
+		if 'submit' in request.POST:
+			for name in kid.kid_field_names:
+				request_text = request.POST.get(name, None)
+				if request_text is not None and request_text is not '':
+					setattr(kid, name, request_text)
+			kid.save()
+			return HttpResponseRedirect('/adminpanel')
+			
 	return render(request, 'adminpanel/details.html', {'kid' : kid})
 
 def panel(request):
