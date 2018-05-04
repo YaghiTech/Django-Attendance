@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<form method="POST" action="">
+{% csrf_token %}
 <html lang="en">
 
 	<style type="text/css">
@@ -150,7 +152,7 @@
 						
 						<a href="{% url 'adminpanel:panel' %}" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>		
 						<input style="width: 27%;" class="form-control input-sm" id="inputsm" type="text" name="blank" placeholder="Recherche">
-						<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">+</button></a>	
+						<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button name = "add_kid" style="margin-right: 4px" type="submit" class="btn btn-success enter-button">+</button></a>	
 						<br>
 
 						<table style="width:100%">
@@ -183,17 +185,35 @@
 					<th>L'heure de sortie</th>
 				</tr>
 
-				<tr>
-					<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-					<td><a href="#">George Thomas</a></td> 
-					<td>11e</td>
-					<td>Science</td>
-					<td>Mr. Yaghi</td>
-					<td>En classe</td>
-					<td>Aide</td>
-					<td>12:59pm</td>
-					<td>1:50pm</td>
-				</tr>
+				{% for kid in kids_signed_in %}
+					<tr>
+						<td><script> document.write(new Date().toLocaleDateString()); </script></td>
+						<td>{{kid.kid_name}}</td> 
+						<td>{{kid.kid_grade}}e</td> 
+						<td>{{kid.subject}}</td>
+						<td>{{kid.teacher_name}}</td>
+						<td>{{kid.place}}</td>
+						<td>{{kid.reason}}</td>
+						<td>{{kid.time_entered}}</td>
+				    	<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
+					
+					</tr>
+				{% endfor %}
+				{% for sign_in in all_sign_ins %}
+					{% if not sign_in.currently_signed_in %}
+					<tr>
+							<td><script> document.write(new Date().toLocaleDateString()); </script></td>
+							<td>{{sign_in.kid_name}}</td> 
+							<td>{{sign_in.kid_grade}}e</td> 
+							<td>{{sign_in.subject}}</td>
+							<td>{{sign_in.teacher_name}}</td>
+							<td>{{sign_in.place}}</td>
+							<td>{{sign_in.subject}}</td>
+							<td>{{sign_in.time_entered}}</td>
+							<td>{{sign_in.time_left}}</td>
+					</tr>
+					{%endif%}
+				{% endfor %}
 
 				<tr>
 					<td><script> document.write(new Date().toLocaleDateString()); </script></td>
@@ -253,3 +273,4 @@ $(document).ready(function () {
 </script>
 
 </html>
+</form>

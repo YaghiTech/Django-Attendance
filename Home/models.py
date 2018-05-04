@@ -4,6 +4,7 @@ from django.db import models
 class Kid(models.Model):
 	kid_name = models.CharField(max_length=40, default='None')
 	kid_grade = models.IntegerField(default=7)
+	kid_student_id = models.CharField(max_length=40, default='')
 
 	time_entered = models.DateTimeField(auto_now=True)
 	kid_signed_in = models.BooleanField(default=False)
@@ -12,6 +13,8 @@ class Kid(models.Model):
 	place = models.CharField(max_length=40, default='None')
 	reason = models.CharField(max_length=40, default='None')
 	teacher_name = models.CharField(max_length=40, default='None')
+
+	kid_field_names = ['kid_name', 'kid_grade', 'kid_student_id']
 
 class Teacher(models.Model):
 	teacher_name = models.CharField(max_length=40, default='None')	

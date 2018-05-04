@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <form method="POST" action="">
+
 	{% csrf_token %}
 	<html lang="en">
 		<style type="text/css">
@@ -139,12 +140,17 @@
 									<form style="float:left">
 										<fieldset>
 											<div class="endroit">
-												<input type="radio" id="contactChoice1" name="place" value="Centre de Réussite" checked>
-												<label for="contactChoice1">Centre de Réussite</label>
-												<input type="radio" id="contactChoice2" name="place" value="Salle de classe">
-												<label for="contactChoice2">Salle de classe</label>
-												<input type="radio" id="contactChoice3" name="place" value="Autre">
-												<label for="contactChoice3">Autre</label>
+												 <input type="radio" id="contactChoice1"
+												   name="place" value="Centre de Réussite" checked>
+												  <label for="contactChoice1">Centre de Réussite</label>
+
+												  <input type="radio" id="contactChoice2"
+												   name="place" value="Salle de classe">
+												  <label for="contactChoice2">Salle de classe</label>
+
+												  <input type="radio" id="contactChoice3"
+												   name="place" value="Autre">
+												  <label for="contactChoice3">Autre</label>
 											</div>
 										</fieldset>
 									</form>
