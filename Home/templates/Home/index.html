@@ -116,7 +116,9 @@
 											<option value="{{kid.kid_name}}">
 										{% endfor %}
 									</datalist>
-
+									{% if kid_does_not_exist %}
+										Éléve n'existe pas
+									{% endif %}
 									<p>Sujet: </p>
 									<input list = "subjects" class="form-control input-sm" id="inputsm" type="text" name="subject"><br>
 									<datalist id="subjects">

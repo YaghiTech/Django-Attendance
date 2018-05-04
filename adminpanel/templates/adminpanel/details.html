@@ -1,5 +1,16 @@
 <form method="POST" action="">
 {% csrf_token %}
-
-{{kid.name}}
+{{kid.kid_name}}
+<br>
+<input type="submit" name = "submit">
+<br>
+name : 
+<input name = "kid_name"  value = "{{kid.kid_name}}">
+<br>
+grade : 
+<input name = "kid_grade"  value = "{{kid.kid_grade}}">
+<br>
+number : 
+<input name = "kid_student_id" value = "{{kid.kid_student_id}}">
+<br>
 </form>
