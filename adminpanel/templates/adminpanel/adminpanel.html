@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <form method="POST" action="">
-{% csrf_token %}
-<html lang="en">
+	{% csrf_token %}
+	<html lang="en">
 
 	<style type="text/css">
 		body {
 			background: #e5def6 !important;
 		}
-		
+
 		.nav-item {
 			color: white;
 		}
@@ -22,255 +22,278 @@
 			width: 100%;
 		}
 
-		a:hover,a:focus{
+		a:hover,
+		a:focus {
 			text-decoration: none;
 			outline: none;
 		}
+
 		.nav-tabs {
 			border-bottom: 1px solid #c4c4c4;
 		}
-		.nav-tabs > li > a{
+
+		.nav-tabs>li>a {
 			border-radius: 0px;
 			border: 1px solid #e4e4e4;
 			border-top: 2px solid #e4e4e4;
 			border-right: 0px none;
 			margin-right: 0px;
 			padding: 8px 17px;
-			transition:0.3s ease;
+			transition: 0.3s ease;
 			background: #F8F8F8;
-			color:#222222;
+			color: #222222;
 		}
-		.nav-tabs > li:last-child{
-			border-right:1px solid #e4e4e4;
+
+		.nav-tabs>li:last-child {
+			border-right: 1px solid #e4e4e4;
 		}
-		.nav-tabs > li > a:hover{
+
+		.nav-tabs>li>a:hover {
 			border: 1px solid #e4e4e4;
 			border-top: 2px solid #7a4b94;
 			border-right: 0px none;
 			background: #F8F8F8;
 		}
-		.nav-tabs > li.active > a,
-		.nav-tabs > li.active > a:focus,
-		.nav-tabs > li.active > a:hover{
+
+		.nav-tabs>li.active>a,
+		.nav-tabs>li.active>a:focus,
+		.nav-tabs>li.active>a:hover {
 			border-top: 2px solid #dc005a;
-			color:#222222;
+			color: #222222;
 			border-right: 0px none;
 		}
-		.tab-content > .tab-pane{
+
+		.tab-content>.tab-pane {
 			border: 1px solid #c4c4c4;
 			border-top: 1px solid #c4c4c4;
 			padding: 20px;
 			line-height: 22px;
 		}
-		.nav-tabs > li.active:hover > a{
-			border-top-color:#7a4b94;
+
+		.nav-tabs>li.active:hover>a {
+			border-top-color: #7a4b94;
 		}
 
 		.dropdown {
 			margin-top: -6px;
 		}
 
-		.dropdown-toggle, .dropdown-toggle {
-        	background:	none !important; 
+		.dropdown-toggle,
+		.dropdown-toggle {
+			background: none !important;
 			border: none !important;
-    	}
-
+		}
 	</style>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-    <title>Centre de Réussite</title>
+		<title>Centre de Réussite</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <style>
-      body {
-        padding-top: 54px;
-      }
-      @media (min-width: 992px) {
-        body {
-          padding-top: 56px;
-        }
-      }
+		<!-- Custom styles for this template -->
+		<style>
+			body {
+				padding-top: 54px;
+			}
 
-    </style>
+			@media (min-width: 992px) {
+				body {
+					padding-top: 56px;
+				}
+			}
+		</style>
 
 	</head>
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#"><b>Centre de Réussite</b></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	<body>
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"><b>Centre de Réussite</b></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-			<li class="nav-item welcome-name">
-				<div class="dropdown">
-				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item welcome-name">
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Bienvenue {{ name }}
 				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
-				  </div>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<a href="{% url 'adminpanel:logout' %}"><button style="margin-right: 4px" type="button" class="btn btn-danger">Déconnexion</button></a>
+						</li>
+
+					</ul>
 				</div>
-			</li>
-			
-			<li class="nav-item">
-				<a href="{% url 'adminpanel:logout' %}"><button style="margin-right: 4px" type="button" class="btn btn-danger">Déconnexion</button></a>
-			</li>
-         
-          </ul>
-        </div>
-      </div>
-    </nav>
+			</div>
+		</nav>
 
-    <!-- Page Content -->
-    <div class="container">
-      	<div class="row">
-			<div class="content">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Élèves</a></li>
-                    <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Historique</a></li>
-                    <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
-                    <li role="presentation"><a href="#Section4" aria-controls="settings" role="tab" data-toggle="tab">Section 4</a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="Section1">
-						
-						<a href="{% url 'adminpanel:panel' %}" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>		
-						<input style="width: 27%;" class="form-control input-sm" id="inputsm" type="text" name="blank" placeholder="Recherche">
-						<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button name = "add_kid" style="margin-right: 4px" type="submit" class="btn btn-success enter-button">+</button></a>	
-						<br>
+		<!-- Page Content -->
+		<div class="container">
+			<div class="row">
+				<div class="content">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Élèves</a></li>
+						<li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Historique</a></li>
+						<li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
+						<li role="presentation"><a href="#Section4" aria-controls="settings" role="tab" data-toggle="tab">Section 4</a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="Section1">
 
-						<table style="width:100%">
-							<tr>
-								<th>Nom de l'élève</th> 
-								<th>Annee d'étude</th>
-								<th># d'étudiant</th>
-							</tr>
-							
-							{% for student in students %}
-							<tr>
-								<td><a href="/panel/{{student.id}}">{{student.kid_name}}</a></td> 
-								<td>{{student.kid_grade}}</td>
-								<td>{{student.kid_student_id}}</td>
-							</tr>
-							{% endfor %}
-						</table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="Section2">
-                        <table style="width:100%">
-				<tr>
-					<th>Date</th>
-					<th>Nom de l'élève</th> 
-					<th>Annee d'étude</th>
-					<th>Sujet</th>
-					<th>Enseignant</th>
-					<th>Endroit</th>
-					<th>Raison</th>
-					<th>L'heure d'arrivee</th>
-					<th>L'heure de sortie</th>
-				</tr>
+							<a href="{% url 'adminpanel:panel' %}" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>
+							<input style="width: 27%;" class="form-control input-sm" id="inputsm" type="text" name="blank" placeholder="Recherche">
+							<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button name = "add_kid" style="margin-right: 4px" type="submit" class="btn btn-success enter-button">+</button></a>
+							<br>
 
-				{% for kid in kids_signed_in %}
-					<tr>
-						<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-						<td>{{kid.kid_name}}</td> 
-						<td>{{kid.kid_grade}}e</td> 
-						<td>{{kid.subject}}</td>
-						<td>{{kid.teacher_name}}</td>
-						<td>{{kid.place}}</td>
-						<td>{{kid.reason}}</td>
-						<td>{{kid.time_entered}}</td>
-				    	<td><button name="signout_{{kid.kid_id}}"  type="submit" class="btn btn-danger center-block"> - </button></td>
-					
-					</tr>
-				{% endfor %}
-				{% for sign_in in all_sign_ins %}
-					{% if not sign_in.currently_signed_in %}
-					<tr>
-							<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-							<td>{{sign_in.kid_name}}</td> 
-							<td>{{sign_in.kid_grade}}e</td> 
-							<td>{{sign_in.subject}}</td>
-							<td>{{sign_in.teacher_name}}</td>
-							<td>{{sign_in.place}}</td>
-							<td>{{sign_in.subject}}</td>
-							<td>{{sign_in.time_entered}}</td>
-							<td>{{sign_in.time_left}}</td>
-					</tr>
-					{%endif%}
-				{% endfor %}
+							<table style="width:100%">
+								<tr>
+									<th>Nom de l'élève</th>
+									<th>Annee d'étude</th>
+									<th># d'étudiant</th>
+								</tr>
 
-				<tr>
-					<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-					<td><a href="#">Evan Dawson</a></td> 
-					<td>11e</td>
-					<td>Science</td>
-					<td>Mr. Yaghi</td>
-					<td>En classe</td>
-					<td>Aide</td>
-					<td>12:26pm</td>
-					<td>1:11pm</td>
-				</tr>
+								{% for student in students %}
+								<tr>
+									<td><a href="/panel/{{student.id}}">{{student.kid_name}}</a></td>
+									<td>{{student.kid_grade}}</td>
+									<td>{{student.kid_student_id}}</td>
+								</tr>
+								{% endfor %}
+							</table>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="Section2">
+							<table style="width:100%">
+								<tr>
+									<th>Date</th>
+									<th>Nom de l'élève</th>
+									<th>Annee d'étude</th>
+									<th>Sujet</th>
+									<th>Enseignant</th>
+									<th>Endroit</th>
+									<th>Raison</th>
+									<th>L'heure d'arrivee</th>
+									<th>L'heure de sortie</th>
+								</tr>
 
-				<tr>
-					<td><script> document.write(new Date().toLocaleDateString()); </script></td>
-					<td><a href="#">Liam Maclean</a></td> 
-					<td>7e</td>
-					<td>Histoire</td>
-					<td>Mr. Ba</td>
-					<td>Centre de Reussite</td>
-					<td>Cours en ligne</td>
-					<td>12:29pm</td>				
-					<td>1:38pm</td>
-				</tr>
-			</table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="Section3">
-                        3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="Section4">
-                        4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                    </div>
-                </div>
-            </div>
+								{% for kid in kids_signed_in %}
+								<tr>
+									<td>
+										<script>
+											document.write(new Date().toLocaleDateString());
+										</script>
+									</td>
+									<td>{{kid.kid_name}}</td>
+									<td>{{kid.kid_grade}}e</td>
+									<td>{{kid.subject}}</td>
+									<td>{{kid.teacher_name}}</td>
+									<td>{{kid.place}}</td>
+									<td>{{kid.reason}}</td>
+									<td>{{kid.time_entered}}</td>
+									<td><button name="signout_{{kid.kid_id}}" type="submit" class="btn btn-danger center-block"> - </button></td>
+
+								</tr>
+								{% endfor %} {% for sign_in in all_sign_ins %} {% if not sign_in.currently_signed_in %}
+								<tr>
+									<td>
+										<script>
+											document.write(new Date().toLocaleDateString());
+										</script>
+									</td>
+									<td>{{sign_in.kid_name}}</td>
+									<td>{{sign_in.kid_grade}}e</td>
+									<td>{{sign_in.subject}}</td>
+									<td>{{sign_in.teacher_name}}</td>
+									<td>{{sign_in.place}}</td>
+									<td>{{sign_in.subject}}</td>
+									<td>{{sign_in.time_entered}}</td>
+									<td>{{sign_in.time_left}}</td>
+								</tr>
+								{%endif%} {% endfor %}
+
+								<tr>
+									<td>
+										<script>
+											document.write(new Date().toLocaleDateString());
+										</script>
+									</td>
+									<td><a href="#">Evan Dawson</a></td>
+									<td>11e</td>
+									<td>Science</td>
+									<td>Mr. Yaghi</td>
+									<td>En classe</td>
+									<td>Aide</td>
+									<td>12:26pm</td>
+									<td>1:11pm</td>
+								</tr>
+
+								<tr>
+									<td>
+										<script>
+											document.write(new Date().toLocaleDateString());
+										</script>
+									</td>
+									<td><a href="#">Liam Maclean</a></td>
+									<td>7e</td>
+									<td>Histoire</td>
+									<td>Mr. Ba</td>
+									<td>Centre de Reussite</td>
+									<td>Cours en ligne</td>
+									<td>12:29pm</td>
+									<td>1:38pm</td>
+								</tr>
+							</table>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="Section3">
+							3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+							occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+						</div>
+						<div role="tabpanel" class="tab-pane" id="Section4">
+							4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+							dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-    </div>
 
-	<div class="footer" style="height: 50px;">
-	</div>
+		<div class="footer" style="height: 50px;">
+		</div>
 
-    <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-</body>
+		<!-- Bootstrap core JavaScript -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+	</body>
 
-<script>
-$(document).ready(function () {
-    $('.nav li a').click(function(e) {
+	<script>
+		$(document).ready(function() {
+			$('.nav li a').click(function(e) {
 
-        $('.nav li.active').removeClass('active');
+				$('.nav li.active').removeClass('active');
 
-        var $parent = $(this).parent();
-        $parent.addClass('active');
-        e.preventDefault();
-    });
-});
-</script>
+				var $parent = $(this).parent();
+				$parent.addClass('active');
+				e.preventDefault();
+			});
+		});
+	</script>
 
-</html>
+	</html>
 </form>
