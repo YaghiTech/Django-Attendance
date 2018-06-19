@@ -169,6 +169,38 @@
 			<input type="submit" name="submit" style="width:100px;">
 		</div>
 		<br>
+		<div role="tabpanel" class="tab-pane" id="Section2">
+							<table style="width:100%">
+								<tr>
+									<th>Date</th>
+									<th>Nom de l'élève</th>
+									<th>Annee d'étude</th>
+									<th>Sujet</th>
+									<th>Enseignant</th>
+									<th>Endroit</th>
+									<th>Raison</th>
+									<th>L'heure d'arrivee</th>
+									<th>L'heure de sortie</th>
+								</tr>
+		{% for sign_in in sign_ins %} 
+								<tr>
+									<td>
+										<script>
+											document.write(new Date().toLocaleDateString());
+										</script>
+									</td>
+									<td>{{sign_in.kid_name}}</td>
+									<td>{{sign_in.kid_grade}}e</td>
+									<td>{{sign_in.subject}}</td>
+									<td>{{sign_in.teacher_name}}</td>
+									<td>{{sign_in.place}}</td>
+									<td>{{sign_in.reason}}</td>
+									<td>{{sign_in.time_entered}}</td>
+									<td>{{sign_in.time_left}}</td>
+								</tr>
+		 {% endfor %}
+		 </table>
+						</div>
 	</body>
 
 	<div class="footer" style="height: 50px;">

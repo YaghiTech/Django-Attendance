@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from Home.models import Kid
+from Home.models import Kid, SignIn
 
 def index(request):
 	_message = ''
@@ -48,8 +48,11 @@ def details(request, kid_id):
 					setattr(kid, name, request_text)
 			kid.save()
 			return HttpResponseRedirect('/adminpanel')
-
-	return render(request, 'adminpanel/details.html', {'kid' : kid})
+	print([x.kid_id for x in SignIn.objects.all()])
+	print(kid.id)
+	print([x for x in SignIn.objects.all() if x.kid_id == kid.id])
+	return render(request, 'adminpanel/details.html', {'kid' : kid, 
+		'sign_ins' : [x for x in SignIn.objects.all() if x.kid_id == kid.id]})
 
 def panel(request):
 	if not request.user.is_authenticated():
@@ -62,5 +65,10 @@ def panel(request):
 			#new_kid = Kid()
 			#new_kid.save()
 	#		return HttpResponseRedirect('/pafnel/')# + str(new_kid.id))
-	context = {'name': request.user.get_full_name(), 'students': students}
+
+	if request.method == 'POST':
+		if 'add_kid' in request.POST:
+			return HttpResponseRedirect('/adminpanel/add_kid') 
+
+	context = {'name': request.user.get_full_name(), 'all_kids': students, 'all_sign_ins' : SignIn.objects.all}
 	return render(request, "adminpanel/adminpanel.html", context)

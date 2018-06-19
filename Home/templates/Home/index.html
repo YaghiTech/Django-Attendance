@@ -191,7 +191,9 @@
 									<td>{{kid.time_entered}}</td>
 									<td><button name="signout_{{kid.kid_id}}" type="submit" class="btn btn-danger center-block"> - </button></td>
 								</tr>
-								{% endfor %} {% for sign_in in all_sign_ins %} {% if not sign_in.currently_signed_in %}
+								{% endfor %} 
+								<!--
+{% for sign_in in all_sign_ins %} {% if not sign_in.currently_signed_in %}
 								<tr>
 									<td>
 										<script>
@@ -203,11 +205,11 @@
 									<td>{{sign_in.subject}}</td>
 									<td>{{sign_in.teacher_name}}</td>
 									<td>{{sign_in.place}}</td>
-									<td>{{sign_in.subject}}</td>
+									<td>{{sign_in.reason}}</td>
 									<td>{{sign_in.time_entered}}</td>
 									<td>{{sign_in.time_left}}</td>
 								</tr>
-								{% endif %} {% endfor %}
+								{% endif %} {% endfor %}-->
 							</table>
 						</div>
 					</div>
@@ -217,13 +219,48 @@
 
 			<!-- Contenu d'enseignant -->
 			<div role="tabpanel" class="tab-pane" id="Section2">
+				<div role="tabpanel" class="tab-pane active" id="Section1">
 				<div class="container">
 					<div class="row">
 						<div style="margin-top: 5%;" class="col-lg-12">
-							fkdaofnasofnasoifnasoifnasiofnaoifgnaogndgosdnfio
+							<div class="login">
+								
+								<p>Nom: </p>
+								<input class="form-control input-sm" id="inputsm" type="text" name="box_name"><br>
+								 
+								
+								<p>Numéro de boite: </p>
+								<input class="form-control input-sm" id="inputsm" type="text" name="box_num"><br>
+								
+								
+								<a href="#" style=""><button style="margin-right: 4px" type="submit" class="btn btn-success enter-button" name="enter_box">Entrer</button></a><br><br>
+							</div>
+
+							<br>
+							<h3 style="float:left"><u>Boite sortie:</u></h3>
+							<table style="width:100%">
+								<tr>
+									<th>Numéro de boite</th>
+									<th>Nom de l'enseignent</th>
+									
+									<th></th>
+								</tr>
+								{% for box in box_signed_in %}
+								<tr>
+
+									
+									
+									<td>{{box.teacher_name}}</td>
+									<td>{{box.box_num}}</td>
+									<td><button name="signout_box_{{box.id}}" type="submit" class="btn btn-danger center-block"> - </button></td>
+								</tr>
+								{% endfor %}
+								
+							</table>
 						</div>
 					</div>
 				</div>
+					
 			</div>
 			<!-- Contenu d'enseignant FIN -->
 		</div>

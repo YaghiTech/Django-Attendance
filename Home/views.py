@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Kid, Teacher, SignIn
+from .models import Kid, Teacher, SignIn, BoxSignOut
 import datetime
 # Create your views here.
 def index(request):
@@ -25,6 +25,21 @@ def index(request):
 
 		name = request.POST.get("name", None)
 		grade =request.POST.get("grade", None)
+
+		#if 'enter_box' in request.POST:
+		if  request.POST.get("box_num", None) != "":
+			box = BoxSignOut()
+			setattr(box, 'box_num', request.POST.get("box_num", None))
+			setattr(box, 'teacher_name', request.POST.get("box_name", None))
+			box.save()
+			print(BoxSignOut.objects.all())
+			return HttpResponseRedirect('/')
+
+		print(request.POST)
+		for box in BoxSignOut.objects.all():
+			if 'signout_box_'+str(box.id) in request.POST:
+				box.delete()
+
 		if grade is None:
 			grade = " "
 		if(name == 'delete_all'):
@@ -38,7 +53,7 @@ def index(request):
 			#newkid.save()
 			return render(request, "Home/index.html", {'all_kids' : all_kids,
 					 'kids_signed_in' : [x for x in SignIn.objects.all() if x.currently_signed_in == True], 'all_teachers' : Teacher.objects.all(),
-					 'all_sign_ins' : SignIn.objects.all, 'kid_does_not_exist' : True})
+					 'all_sign_ins' : SignIn.objects.all, 'kid_does_not_exist' : True, 'box_signed_in' : BoxSignOut.objects.all()})
 			return HttpResponseRedirect('/')
 		else:
 			kid = Kid.objects.get(kid_name=name)
@@ -73,7 +88,7 @@ def index(request):
 		
 	return render(request, "Home/index.html", {'all_kids' : all_kids,
 					 'kids_signed_in' : [x for x in SignIn.objects.all() if x.currently_signed_in == True], 'all_teachers' : Teacher.objects.all(),
-					 'all_sign_ins' : SignIn.objects.all, "kid_does_not_exist" : False})
+					 'all_sign_ins' : SignIn.objects.all, "kid_does_not_exist" : False,  'box_signed_in' : BoxSignOut.objects.all()})
 
 
 def adminlogin(request):

@@ -151,8 +151,7 @@
 					<ul class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Élèves</a></li>
 						<li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Historique</a></li>
-						<li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
-						<li role="presentation"><a href="#Section4" aria-controls="settings" role="tab" data-toggle="tab">Section 4</a></li>
+						
 					</ul>
 					<!-- Tab panes -->
 					<div class="tab-content">
@@ -160,6 +159,7 @@
 
 							<a href="{% url 'adminpanel:panel' %}" style="float: left;"><button style="margin-right: 4px" type="button" class="btn btn-success enter-button">></button></a>
 							<input style="width: 27%;" class="form-control input-sm" id="inputsm" type="text" name="blank" placeholder="Recherche">
+							
 							<a href="{% url 'adminpanel:panel' %}" style="float: right;"><button name = "add_kid" style="margin-right: 4px" type="submit" class="btn btn-success enter-button">+</button></a>
 							<br>
 
@@ -170,7 +170,7 @@
 									<th># d'étudiant</th>
 								</tr>
 
-								{% for student in students %}
+								{% for student in all_kids %}
 								<tr>
 									<td><a href="/panel/{{student.id}}">{{student.kid_name}}</a></td>
 									<td>{{student.kid_grade}}</td>
@@ -193,24 +193,7 @@
 									<th>L'heure de sortie</th>
 								</tr>
 
-								{% for kid in kids_signed_in %}
-								<tr>
-									<td>
-										<script>
-											document.write(new Date().toLocaleDateString());
-										</script>
-									</td>
-									<td>{{kid.kid_name}}</td>
-									<td>{{kid.kid_grade}}e</td>
-									<td>{{kid.subject}}</td>
-									<td>{{kid.teacher_name}}</td>
-									<td>{{kid.place}}</td>
-									<td>{{kid.reason}}</td>
-									<td>{{kid.time_entered}}</td>
-									<td><button name="signout_{{kid.kid_id}}" type="submit" class="btn btn-danger center-block"> - </button></td>
-
-								</tr>
-								{% endfor %} {% for sign_in in all_sign_ins %} {% if not sign_in.currently_signed_in %}
+								{% for sign_in in all_sign_ins %} {% if not sign_in.currently_signed_in %}
 								<tr>
 									<td>
 										<script>
@@ -222,43 +205,13 @@
 									<td>{{sign_in.subject}}</td>
 									<td>{{sign_in.teacher_name}}</td>
 									<td>{{sign_in.place}}</td>
-									<td>{{sign_in.subject}}</td>
+									<td>{{sign_in.reason}}</td>
 									<td>{{sign_in.time_entered}}</td>
 									<td>{{sign_in.time_left}}</td>
 								</tr>
 								{%endif%} {% endfor %}
 
-								<tr>
-									<td>
-										<script>
-											document.write(new Date().toLocaleDateString());
-										</script>
-									</td>
-									<td><a href="#">Evan Dawson</a></td>
-									<td>11e</td>
-									<td>Science</td>
-									<td>Mr. Yaghi</td>
-									<td>En classe</td>
-									<td>Aide</td>
-									<td>12:26pm</td>
-									<td>1:11pm</td>
-								</tr>
-
-								<tr>
-									<td>
-										<script>
-											document.write(new Date().toLocaleDateString());
-										</script>
-									</td>
-									<td><a href="#">Liam Maclean</a></td>
-									<td>7e</td>
-									<td>Histoire</td>
-									<td>Mr. Ba</td>
-									<td>Centre de Reussite</td>
-									<td>Cours en ligne</td>
-									<td>12:29pm</td>
-									<td>1:38pm</td>
-								</tr>
+								
 							</table>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="Section3">

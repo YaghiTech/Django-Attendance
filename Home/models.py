@@ -46,3 +46,8 @@ class SignIn(models.Model):
 #        on_delete=models.CASCADE,
 #    )
 
+class BoxSignOut(models.Model):
+	currently_signed_in =models.BooleanField(default=True)
+	teacher_name = models.CharField(max_length=40, default='None')
+	box_num = models.CharField(max_length=40, default='None')
+
