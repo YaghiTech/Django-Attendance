@@ -54,21 +54,35 @@ def details(request, kid_id):
 	return render(request, 'adminpanel/details.html', {'kid' : kid, 
 		'sign_ins' : [x for x in SignIn.objects.all() if x.kid_id == kid.id]})
 
+sort_by = 'kid_name'
+sort_by_possibilities = ['kid_name','kid_grade','time_left','subject','teacher_name','place']
 def panel(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect(reverse('adminpanel:index'))
 
 	students = Kid.objects.all()
-	#if request.method == 'POST':		
-	#	if 'add_kid' in request.POST:
-			#print("neww kid")
-			#new_kid = Kid()
-			#new_kid.save()
-	#		return HttpResponseRedirect('/pafnel/')# + str(new_kid.id))
+	
+	#sign_ins = SignIn.objects.all()
+	if 'sort_by' in request.COOKIES:
+		sort_by = request.COOKIES['sort_by']
+	else:
+		response.set_cookie('sort_by', 'kid_name')
 
+	sign_ins = SignIn.objects.order_by(sort_by)
 	if request.method == 'POST':
+
+
+		for i in sort_by_possibilities:
+			if 'sort_' + i in request.POST:
+
+				sort_by = i
+				response =  HttpResponseRedirect('/panel/')
+				response.set_cookie('sort_by', i)
+				return response 
+
 		if 'add_kid' in request.POST:
 			return HttpResponseRedirect('/adminpanel/add_kid') 
 
-	context = {'name': request.user.get_full_name(), 'all_kids': students, 'all_sign_ins' : SignIn.objects.all}
+
+	context = {'name': request.user.get_full_name(), 'all_kids': students, 'all_sign_ins' : sign_ins}
 	return render(request, "adminpanel/adminpanel.html", context)
